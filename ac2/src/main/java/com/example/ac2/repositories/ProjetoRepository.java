@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import com.example.ac2.models.Projeto;
 
 public interface ProjetoRepository extends JpaRepository<Projeto, Integer> {
-        List<Projeto> findByDescricaoLike(String descricao);
+        //List<Projeto> findByDescricaoLike(String descricao);
 
         List<Projeto> findByDataInicioBetween(LocalDate dataInicio, LocalDate dataFim);
 
