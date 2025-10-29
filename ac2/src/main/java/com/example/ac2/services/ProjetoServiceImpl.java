@@ -61,6 +61,31 @@ public class ProjetoServiceImpl implements ProjetoService {
     }
 
     @Override
+    public List<DadosProjetoDTO> listarTodos() {
+        List<Projeto> projetos = projetoRepository.findAll();
+
+        return projetos.stream()
+                .map(projeto -> {
+                    List<FuncionarioDTO> funcionarios = projeto.getFuncionarios() == null ? List.of()
+                            : projeto.getFuncionarios().stream().map(f -> {
+                                FuncionarioDTO dto = new FuncionarioDTO();
+                                dto.setId(f.getId());
+                                dto.setNome(f.getNome());
+                                return dto;
+                            }).collect(Collectors.toList());
+
+                    return DadosProjetoDTO.builder()
+                            .id(projeto.getId())
+                            .descricao(projeto.getDescricao())
+                            .dataInicio(projeto.getDataInicio())
+                            .dataFim(projeto.getDataFim())
+                            .funcionarios(funcionarios)
+                            .build();
+                })
+                .collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public void vincularFuncionario(Integer idProjeto, Integer idFuncionario) {
         Projeto projeto = projetoRepository.findById(idProjeto)
