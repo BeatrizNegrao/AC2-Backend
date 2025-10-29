@@ -31,7 +31,6 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public List<DadosProjetoDTO> buscarProjetos(Integer idFuncionario) {
-        // validar existência do funcionário e dar feedback adequado
         if (!funcionarioRepository.existsById(idFuncionario)) {
             throw new RegraNegocioException("Funcionário não encontrado");
         }
