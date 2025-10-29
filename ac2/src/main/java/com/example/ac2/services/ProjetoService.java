@@ -9,4 +9,6 @@ public interface ProjetoService {
 	DadosProjetoDTO buscarProjetoPorId(Integer id);
 
 	void vincularFuncionario(Integer idProjeto, Integer idFuncionario);
+
+	List<DadosProjetoDTO> listarTodos();
 }
