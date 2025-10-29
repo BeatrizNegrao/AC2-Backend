@@ -28,6 +28,11 @@ public class ProjetoController {
 		projetoService.adicionar(projetoDTO);
 	}
 
+	@GetMapping
+    public List<DadosProjetoDTO> listarTodos() {
+        return projetoService.listarTodos();
+    }
+
 	@GetMapping("/{id}")
 	public DadosProjetoDTO buscarProjetoPorId(@PathVariable Integer id) {
 		return projetoService.buscarProjetoPorId(id);
