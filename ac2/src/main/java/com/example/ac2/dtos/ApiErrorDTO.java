@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import lombok.Getter;
 
-// DTO para representar erros de API (intersepta erros na api)
 public class ApiErrorDTO {
     @Getter
     private List<String> erros;   
